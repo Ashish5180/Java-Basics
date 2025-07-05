@@ -69,6 +69,18 @@ class Main {
         }
         System.out.println("null");
    }
+
+   // revrese linked list
+   public Node recursiveReverse(Node head){
+if(head==null || head.next==null){
+    return head;
+}
+    Node newHead = recursiveReverse(head.next);
+    head.next.next=head;
+    head.next=null;
+    return newHead;
+
+   }
    
     public static void main(String[] args) {
         Main list = new Main();
@@ -82,7 +94,13 @@ class Main {
         list.printList();
         list.deleteLast();
         list.printList();
+
+        list.head = list.recursiveReverse(list.head);
+        System.out.println("Reversed List:");
+        list.printList();
     }
+
+    
 }
 
 
